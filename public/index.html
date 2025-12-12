@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Coletor Secreto</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 20px auto; padding: 20px; }
+        textarea { width: 100%; height: 100px; margin-bottom: 10px; }
+        button { padding: 10px 20px; cursor: pointer; }
+        #anotacoes { background: #f4f4f4; padding: 10px; margin-top: 20px; white-space: pre-wrap; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+
+    <h1>Coletor</h1>
+    
+    <textarea id="textoInput" placeholder="Vou coletar oque for escrito aqui..."></textarea>
+    <br>
+    <button onclick="salvarNota()">💾 Enviar para Coleta</button>
+
+    <script>
+        async function salvarNota() {
+            const texto = document.getElementById('textoInput').value;
+            
+            if (!texto) return alert("Digite algo!");
+
+            const resposta = await fetch('/salvar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ texto: texto })
+            });
+
+            if (resposta.ok) {
+                document.getElementById('textoInput').value = "";
+                carregarNotas();
+            }
+        }diario
+    </script>
+
+</body>
+</html>
