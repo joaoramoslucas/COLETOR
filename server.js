@@ -35,6 +35,6 @@ app.get('/ler', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
-    console.log("Servidor rodando! link de acesso : http://localhost:3000")
+app.listen(5000, '0.0.0.0', () => {
+    console.log("Servidor rodando na porta 5000")
 })
